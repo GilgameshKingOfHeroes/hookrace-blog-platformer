@@ -15,7 +15,8 @@ from stopwatch import Stopwatch
 
 UPDATES_PER_SECOND = 50
 SECONDS_PER_UPDATE = 1.0 / UPDATES_PER_SECOND
-
+WINDOW_SIZE = (1600, 1100)
+WINDOW_TITLE = "Jin's Brotherly Paradise"
 # Objective 1: Create the title and size variables
 # YOUR CODE HERE...
 
@@ -82,14 +83,17 @@ def main() -> int:
     resources = Resources(__file__, "resources")
     controller = Controller()
 
-    # Objective 1: Create and show the Window
-    # YOUR CODE HERE...
+    window = Window(WINDOW_TITLE, WINDOW_SIZE)
+    window.show()
 
-    # Objective 2: Create the Renderer with a background color
-    # YOUR CODE HERE...
+    renderer = Renderer(window)
+    color = Color(255, 255, 255)
+    renderer.color = color
+
 
     # Objective 3: Set up the game
     # YOUR CODE HERE...
+def game() -> Resources:
 
     # Game Loop, draws each frame
     last_time = time()
@@ -103,18 +107,16 @@ def main() -> int:
         if controller.has_input(Input.QUIT):
             break
 
+        while lag >= SECONDS_PER_UPDATE:
+            lag -= SECONDS_PER_UPDATE
         # Objective 3: Update the game the appropriate number of frames
         # YOUR CODE HERE...
 
-        # Objective 2: Draw over all drawings of the last frame with the default color
-        # YOUR CODE HERE...
-
+        renderer.clear()
         # Objective 3: Render the game
         # YOUR CODE HERE...
 
-        # Objective 2: Show the result on screen
-        # YOUR CODE HERE...
-
+        renderer.present()
     sdl2.ext.quit()
     return 0
 
