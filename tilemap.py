@@ -36,7 +36,7 @@ class Map:
 
         # Objective 5: Convert from row, col back to tile index
         # YOUR CODE HERE...
-        return 0
+        return self.tiles[nx*self.width+ny]
 
     def is_solid(self, pos: Point2d) -> bool:
         return self.get_tile(pos) not in {Tile.AIR, Tile.START, Tile.FINISH}
@@ -112,5 +112,11 @@ def load_tile_map(resources: Resources) -> Tuple[List[int], int, int]:
 
     # Objective 5: Load in tilemap
     # YOUR CODE HERE...
-
+    path=resources.get_path('default.map')
+    map=open(path, "r")
+    for line in map.readlines():
+        for i in line.split(" "):
+            if i == "":
+                continue
+            tiles.append(int(i))
     return tiles, width, height

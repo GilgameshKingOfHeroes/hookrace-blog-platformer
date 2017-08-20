@@ -94,3 +94,4 @@ class Player:
 
         # Objective 4: Iterate over the body parts and render each one
         # YOUR CODE HERE...
+

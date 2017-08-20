@@ -5,7 +5,8 @@ from sdl2.ext import Color, Renderer, Resources, Window
 from basic2d import Point2d, Vector2d
 from controller import Input, Controller
 from stopwatch import Stopwatch
-
+from player import Player
+from tilemap import Map, Tile
 # Objective 4: Import Player from player module
 # YOUR CODE HERE...
 
@@ -28,9 +29,11 @@ class Game:
 
         # Objective 4: Create a Player
         # YOUR CODE HERE...
+        self.player=Player(resources)
 
         # Objective 5: Create a Map
         # YOUR CODE HERE...
+        self.map=Map(resources)
 
     def update(self, controller: Controller) -> None:
         if controller.has_input(Input.RESTART):
@@ -51,9 +54,11 @@ class Game:
     def render(self, renderer: Renderer) -> None:
         # Objective 4: Render the player
         # YOUR CODE HERE...
+        self.player.render(renderer, self.camera)
 
         # Objective 5: Render the tilemap
         # YOUR CODE HERE...
+        self.map.render(renderer, self.camera)
 
         self.stopwatch.render(renderer)
 
@@ -65,8 +70,8 @@ def move_camera(camera: Vector2d, focus: Point2d) -> None:
 
     # Objective 7: Uncomment and try out the different camera movements
 
-    # 1. always in center:
-    # camera.x = focus.x - half_win_width
+    #1. always in center:
+    camera.x = focus.x - half_win_width
 
     # 2. follow once leaves center:
     # left_area = focus.x - half_win_width - 100
@@ -93,7 +98,7 @@ def main() -> int:
 
     # Objective 3: Set up the game
     # YOUR CODE HERE...
-def game() -> Resources:
+    game = Game(resources)
 
     # Game Loop, draws each frame
     last_time = time()
@@ -115,6 +120,7 @@ def game() -> Resources:
         renderer.clear()
         # Objective 3: Render the game
         # YOUR CODE HERE...
+        game.render(renderer)
 
         renderer.present()
     sdl2.ext.quit()
