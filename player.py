@@ -49,7 +49,7 @@ class Player:
         if self.texture is None:
             factory = SpriteFactory(renderer=renderer)
             self.texture = factory.from_image(self.texture_path)
-        texture = self.texture  # type: TextureSprite
+        texture = self.texture   #type: TextureSprite
 
         # Objective 4: Use the camera and player position to find the screen position
         #             |--1--2--3--4--| <-- x-axis screen (int)
@@ -82,16 +82,26 @@ class Player:
         # 7. basic eye (left)    -> (-18, -21,  36, 36) <-- 9/8 scale
         # 8. basic eye (right)   -> ( -6, -21,  36, 36) <-- 9/8 scale *FLIPPED*
         body_parts = [
-            ((192, 64, 64, 32), (x - 60, y,      96, 48), SDL_FLIP_NONE),
-            ((192, 32, 64, 32), (x - 60, y,      96, 48), SDL_FLIP_NONE),
-            ((96,  0,  96, 96), (x - 48, y - 48, 96, 96), SDL_FLIP_NONE),
-            ((0,   0,  96, 96), (x - 48, y - 48, 96, 96), SDL_FLIP_NONE),
-            ((192, 64, 64, 32), (x - 36, y,      96, 48), SDL_FLIP_NONE),
-            ((192, 32, 64, 32), (x - 36, y,      96, 48), SDL_FLIP_NONE),
-            ((64,  96, 32, 32), (x - 18, y - 21, 36, 36), SDL_FLIP_NONE),
-            ((64,  96, 32, 32), (x - 6,  y - 21, 36, 36), SDL_FLIP_HORIZONTAL)
+            ((192, 64, 64, 32), (x - 60, y, 96, 48), SDL_FLIP_NONE),
+            ((192, 32, 64, 32), (x - 60, y, 96, 48), SDL_FLIP_NONE),
+            ((96, 0, 96, 96), (x - 48, y - 48, 96, 96), SDL_FLIP_NONE),
+            ((0, 0, 96, 96), (x - 48, y - 48, 96, 96), SDL_FLIP_NONE),
+            ((192, 64, 64, 32), (x - 36, y, 96, 48), SDL_FLIP_NONE),
+            ((192, 32, 64, 32), (x - 36, y, 96, 48), SDL_FLIP_NONE),
+            ((64, 96, 32, 32), (x - 18, y - 21, 36, 36), SDL_FLIP_NONE),
+            ((64, 96, 32, 32), (x - 6, y - 21, 36, 36), SDL_FLIP_HORIZONTAL)
         ]
 
         # Objective 4: Iterate over the body parts and render each one
         # YOUR CODE HERE...
+        #renderer.copy(src=texture, srcrect=body_parts)
 
+
+# ((192, 64, 64, 32), (x - 60, y, 96, 48), SDL_FLIP_NONE),
+# ((192, 32, 64, 32), (x - 60, y, 96, 48), SDL_FLIP_NONE),
+# ((96, 0, 96, 96), (x - 48, y - 48, 96, 96), SDL_FLIP_NONE),
+# ((0, 0, 96, 96), (x - 48, y - 48, 96, 96), SDL_FLIP_NONE),
+# ((192, 64, 64, 32), (x - 36, y, 96, 48), SDL_FLIP_NONE),
+# ((192, 32, 64, 32), (x - 36, y, 96, 48), SDL_FLIP_NONE),
+# ((64, 96, 32, 32), (x - 18, y - 21, 36, 36), SDL_FLIP_NONE),
+# ((64, 96, 32, 32), (x - 6, y - 21, 36, 36), SDL_FLIP_HORIZONTAL)

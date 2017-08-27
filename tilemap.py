@@ -115,8 +115,14 @@ def load_tile_map(resources: Resources) -> Tuple[List[int], int, int]:
     path=resources.get_path('default.map')
     map=open(path, "r")
     for line in map.readlines():
+        lineWidth=0
         for i in line.split(" "):
             if i == "":
                 continue
             tiles.append(int(i))
+            lineWidth += 1
+        if width > 0 and width != lineWidth:
+            print ("ERROR")
+        width = lineWidth
+        height += 1
     return tiles, width, height

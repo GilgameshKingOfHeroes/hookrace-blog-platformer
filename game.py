@@ -39,8 +39,8 @@ class Game:
         if controller.has_input(Input.RESTART):
             self.stopwatch.reset()
 
-            # Objective 4: Put the player back at the start
-            # YOUR CODE HERE...
+        # Objective 4: Put the player back at the start
+        # YOUR CODE HERE...
 
         # Objective 6: Call the player update method
         # YOUR CODE HERE...
@@ -92,7 +92,7 @@ def main() -> int:
     window.show()
 
     renderer = Renderer(window)
-    color = Color(255, 255, 255)
+    color = Color(r=215, g=215, b=255)
     renderer.color = color
 
 
